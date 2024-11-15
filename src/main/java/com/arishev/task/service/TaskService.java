@@ -1,11 +1,11 @@
-package com.arishev.aop.service;
+package com.arishev.task.service;
 
-import com.arishev.aop.entity.Task;
-import com.arishev.aop.repository.TaskRepository;
+import com.arishev.task.entity.Task;
+import com.arishev.task.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -30,10 +30,14 @@ public class TaskService {
                     t.setUserId(updatedTask.getUserId());
 
                     return taskRepository.save(t);
-                }).orElse(null);
+                }).orElse(taskRepository.save(updatedTask));
     }
 
     public void deleteTask(long id) {
          taskRepository.deleteById(id);
+    }
+
+    public List<Task> getTasks() {
+        return taskRepository.findAll();
     }
 }

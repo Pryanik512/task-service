@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.arishev</groupId>
-	<artifactId>aop</artifactId>
+	<artifactId>task-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>aop-demo</name>
-	<description>Dmitry Arishev&apos;s demo project for AOP</description>
+	<name>task-service</name>
+	<description>Dmitry Arishev&apos;s demo project for Task service</description>
 
 	<url/>
 	<licenses>

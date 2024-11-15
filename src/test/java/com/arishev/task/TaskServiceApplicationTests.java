@@ -1,10 +1,10 @@
-package com.arishev.aop;
+package com.arishev.task;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AopDemoApplicationTests {
+class TaskServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

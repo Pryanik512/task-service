@@ -1,7 +1,6 @@
-package com.arishev.aop.entity;
+package com.arishev.task.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 

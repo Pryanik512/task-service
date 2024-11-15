@@ -1,10 +1,12 @@
-package com.arishev.aop.controller;
+package com.arishev.task.controller;
 
 
-import com.arishev.aop.entity.Task;
-import com.arishev.aop.service.TaskService;
+import com.arishev.task.entity.Task;
+import com.arishev.task.service.TaskService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/tasks")
@@ -22,6 +24,13 @@ public class TaskController {
     public Task getTask(@PathVariable long id) {
 
         return taskService.getTask(id);
+
+    }
+
+    @GetMapping
+    public List<Task> getTasks() {
+
+        return taskService.getTasks();
 
     }
 

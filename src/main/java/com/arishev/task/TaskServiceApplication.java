@@ -1,13 +1,13 @@
-package com.arishev.aop;
+package com.arishev.task;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AopDemoApplication {
+public class TaskServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AopDemoApplication.class, args);
+		SpringApplication.run(TaskServiceApplication.class, args);
 	}
 
 }
