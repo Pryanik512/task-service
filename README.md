@@ -1,7 +1,7 @@
 **Simple CRUD REST service for Tasks**
 
 Tech stack:
-Spring Boot WEB, Spring Boot JPA, DataBase - H2 (in memory mode)
+Java 17, Spring Boot WEB, Spring Boot JPA, DataBase - H2 (in memory mode)
 
 
 <b>Task entity</b>:<br>
