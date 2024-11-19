@@ -1,5 +1,8 @@
 package com.arishev.task.service;
 
+import com.arishev.task.aspect.annotations.LogException;
+import com.arishev.task.aspect.annotations.LogExecution;
+import com.arishev.task.aspect.annotations.LogTaskResult;
 import com.arishev.task.entity.Task;
 import com.arishev.task.repository.TaskRepository;
 import lombok.AllArgsConstructor;
@@ -13,13 +16,16 @@ public class TaskService {
 
     private TaskRepository taskRepository;
 
+    @LogExecution
     public long createTask(Task task) {
 
         return taskRepository.save(task).getId();
     }
 
+    @LogException
+    @LogTaskResult
     public Task getTask(long id) {
-        return taskRepository.findById(id).orElse(null);
+        return taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task wasn't found!"));
     }
 
     public Task updateTask(Task updatedTask, long id) {

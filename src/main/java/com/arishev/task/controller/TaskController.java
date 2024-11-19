@@ -1,6 +1,7 @@
 package com.arishev.task.controller;
 
 
+import com.arishev.task.aspect.annotations.LogProfiling;
 import com.arishev.task.entity.Task;
 import com.arishev.task.service.TaskService;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class TaskController {
     }
 
     @GetMapping
+    @LogProfiling
     public List<Task> getTasks() {
 
         return taskService.getTasks();
