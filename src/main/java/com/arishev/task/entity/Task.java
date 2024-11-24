@@ -1,6 +1,7 @@
 package com.arishev.task.entity;
 
 
+import com.arishev.task.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -16,4 +17,8 @@ public class Task {
     private String title;
     private String description;
     private Long userId;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
 }

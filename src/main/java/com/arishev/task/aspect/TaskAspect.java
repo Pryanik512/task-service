@@ -50,7 +50,7 @@ public class TaskAspect {
                     proceedingJoinPoint.getSignature().toShortString() + " = " +
                     (stopTime - startTime));
         } catch (Throwable e) {
-           throw new RuntimeException();
+           throw new RuntimeException(e.getMessage());
         }
 
         return result;
