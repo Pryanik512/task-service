@@ -1,7 +1,7 @@
 **Simple CRUD REST service for Tasks**
 
 Tech stack:
-Java 17, Spring Boot WEB, Spring Boot JPA, DataBase - H2 (in memory mode)
+Java 17, Spring Boot WEB, Spring Boot JPA, DataBase - PostgreSQL, Kafka
 
 
 <b>Task entity</b>:<br>
@@ -17,6 +17,10 @@ Task(id, title, description,userId)
 
 
 **Usage:**
+<br><br>
+Firstly launch docker-compose.yml file from the project root folder.<br>
+
+
 Build a jar file with command:<br>
 `mvn clean install`
 
