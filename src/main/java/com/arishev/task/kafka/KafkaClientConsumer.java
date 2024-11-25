@@ -2,7 +2,6 @@ package com.arishev.task.kafka;
 
 import com.arishev.task.dto.TaskDTO;
 import com.arishev.task.service.NotificationService;
-import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,7 +11,6 @@ import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
-import java.net.ConnectException;
 import java.time.Duration;
 import java.util.List;
 
