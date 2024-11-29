@@ -21,13 +21,13 @@ public class TaskController {
 
     @PostMapping
     public long createTask(@RequestBody TaskDTO taskDto) {
-        return taskService.createTask(mapper.toEntity(taskDto));
+        return taskService.createTask(taskDto);
     }
 
     @GetMapping("/{id}")
     public TaskDTO getTask(@PathVariable long id) {
 
-        return mapper.toDto(taskService.getTask(id));
+        return taskService.getTask(id);
 
     }
 
@@ -35,15 +35,14 @@ public class TaskController {
     @LogProfiling
     public List<TaskDTO> getTasks() {
 
-        return mapper.toDtoList(taskService.getTasks());
+        return taskService.getTasks();
 
     }
 
     @PutMapping("/{id}")
     public TaskDTO updateTask(@RequestBody TaskDTO taskDto, @PathVariable long id) {
 
-        taskService.notifyStatusChanged(taskDto, id);
-        return mapper.toDto(taskService.updateTask(mapper.toEntity(taskDto), id));
+        return taskService.updateTask(taskDto, id);
     }
 
     @DeleteMapping("/{id}")

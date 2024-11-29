@@ -40,3 +40,6 @@ task-service:
       intervals:
           ms: 3000
     task-status-topic: task_status_topic
+
+email:
+  no-replay: no-replay@fake.com

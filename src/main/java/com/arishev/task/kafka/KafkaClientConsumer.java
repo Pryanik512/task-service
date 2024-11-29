@@ -2,7 +2,7 @@ package com.arishev.task.kafka;
 
 import com.arishev.task.dto.TaskDTO;
 import com.arishev.task.service.NotificationService;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
@@ -16,10 +16,10 @@ import java.util.List;
 
 @Slf4j
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class KafkaClientConsumer {
 
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
 
     @KafkaListener(id = "task-listener",
@@ -31,18 +31,23 @@ public class KafkaClientConsumer {
                          @Header(KafkaHeaders.RECEIVED_KEY) String key) {
 
 
-        log.debug("[Kafka consumer]: message handling started");
+        log.debug("[Kafka consumer]: Started handling messages from topic %s".formatted(topic));
+        int messageIndex = 0;
         try {
             log.info("[Kafka consumer]: Message List = " + messageList);
-            messageList
-                    .forEach(task -> notificationService.notify("Task with id = " + task.getId() +
-                                                                " got a new status = " + task.getStatus().name()));
+
+            for (TaskDTO task : messageList) {
+                notificationService.notify("Task with id = " + task.getId() +
+                        " got a new status = " + task.getStatus().name());
+                messageIndex++;
+            }
+
             ack.acknowledge();
         } catch (Exception e) {
             log.error("Error during handling messages from Kafka", e);
-            ack.nack(Duration.ofSeconds(3));
+            ack.nack(messageIndex, Duration.ofSeconds(3));
         }
 
-        log.debug("[Kafka consumer]: message handling ended");
+        log.debug("[Kafka consumer]: Ended handling messages from topic %s".formatted(topic));
     }
 }
