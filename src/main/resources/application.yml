@@ -3,12 +3,43 @@ spring:
     name: task-service
 
   datasource:
-    url: jdbc:h2:mem:aop_db
-    username: admin
-    password: admin
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5433/task_db
+    username: user
+    password: user
+    driverClassName: org.postgresql.Driver
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: 'create-drop'
 
-  h2:
-    console.enabled: true
+
+  mail:
+    host: localhost
+    port: 8025
+    username: mail_user
+    password: mail_user
+    protocol: smtp
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+
+task-service:
+  kafka:
+    group.id: task-service-group
+    servers: localhost:9092
+    session:
+      timeout:
+        ms: 15000
+    partitions:
+      fetch:
+        max:
+          bytes: 300000
+    poll:
+      records:
+        max: 1
+      intervals:
+          ms: 3000
+    task-status-topic: task_status_topic
+
+email:
+  no-replay: no-replay@fake.com
