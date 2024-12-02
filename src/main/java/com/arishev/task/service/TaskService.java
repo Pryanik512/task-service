@@ -1,8 +1,8 @@
 package com.arishev.task.service;
 
-import com.arishev.task.aspect.annotations.LogException;
-import com.arishev.task.aspect.annotations.LogExecution;
-import com.arishev.task.aspect.annotations.LogTaskResult;
+import com.arishev.logging_starter.aspect.annotations.LogException;
+import com.arishev.logging_starter.aspect.annotations.LogExecution;
+import com.arishev.logging_starter.aspect.annotations.LogTaskResult;
 import com.arishev.task.dto.TaskDTO;
 import com.arishev.task.entity.Task;
 import com.arishev.task.kafka.KafkaClientProducer;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

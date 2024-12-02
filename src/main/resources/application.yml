@@ -43,3 +43,7 @@ task-service:
 
 email:
   no-replay: no-replay@fake.com
+
+my-logging:
+  enabled: true
+  level: WARN
