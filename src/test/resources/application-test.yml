@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: task-service
+
+  datasource:
+    url: test_url
+    username: test_user
+    password: test_password
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: 'create-drop'
+
+
+
+
+task-service:
+  kafka:
+    group.id: task-service-group
+    servers: localhost:9092
+    session:
+      timeout:
+        ms: 15000
+    partitions:
+      fetch:
+        max:
+          bytes: 300000
+    poll:
+      records:
+        max: 1
+      intervals:
+        ms: 3000
+    task-status-topic: task_status_topic
