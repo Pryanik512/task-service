@@ -32,7 +32,7 @@
 		<aspectj.version>1.9.7</aspectj.version>
 		<slf4j.version>2.0.7</slf4j.version>
 		<postgresql.version>42.4.5</postgresql.version>
-		<mapstruct.version>1.5.5.Final</mapstruct.version>
+		<testcontainer.version>1.18.1</testcontainer.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -84,16 +84,18 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>${mapstruct.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct-processor</artifactId>
-			<version>${mapstruct.version}</version>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${testcontainer.version}</version>
+			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>kafka</artifactId>
+			<version>${testcontainer.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
