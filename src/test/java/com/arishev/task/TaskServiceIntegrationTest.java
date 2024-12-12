@@ -76,9 +76,7 @@ public class TaskServiceIntegrationTest extends AbstractTestContainer {
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].title", is("Task_test_1")))
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].title", is("Task_test_2")))
-        ;
-
+                .andExpect(jsonPath("$[1].title", is("Task_test_2")));
     }
 
     @Test
@@ -96,8 +94,8 @@ public class TaskServiceIntegrationTest extends AbstractTestContainer {
         String requestBodyTask = mapper.writeValueAsString(taskDTO);
 
         mockMvc.perform(put("/tasks/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBodyTask))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(requestBodyTask))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.id", is(1)))

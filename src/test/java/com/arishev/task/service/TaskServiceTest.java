@@ -88,6 +88,7 @@ class TaskServiceTest {
         long wrongTaskId = 999L;
         Assertions.assertThrows(RuntimeException.class, () -> taskService.getTask(wrongTaskId));
     }
+
     @Test
     void updateTask() {
 

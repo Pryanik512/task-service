@@ -19,20 +19,20 @@ public class AbstractTestContainer {
 
     static {
 
-            postgres  = new PostgreSQLContainer<>("postgres:14.8-alpine3.18")
-                        .withDatabaseName("test_db")
-                        .withUsername("test")
-                        .withPassword("test");
+        postgres = new PostgreSQLContainer<>("postgres:14.8-alpine3.18")
+                .withDatabaseName("test_db")
+                .withUsername("test")
+                .withPassword("test");
 
-            kafka =  new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:6.2.4"))
-                    .withEmbeddedZookeeper()
+        kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:6.2.4"))
+                .withEmbeddedZookeeper()
                 .withEnv("KAFKA_LISTENER_SECURITY_PROTOCOL_MAP", "BROKER:PLAINTEXT,PLAINTEXT:PLAINTEXT")
                 .withEnv("KAFKA_INTER_BROKER_LISTENER_NAME", "BROKER")
                 .withEnv("KAFKA_BROKER_ID", "1")
                 .withEnv("KAFKA_BROKER_ID", "1")
                 .withEnv("KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR", "1");
 
-            Startables.deepStart(Stream.of(postgres, kafka)).join();
+        Startables.deepStart(Stream.of(postgres, kafka)).join();
 
     }
 
